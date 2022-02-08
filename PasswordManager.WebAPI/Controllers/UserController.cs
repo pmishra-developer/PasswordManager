@@ -17,10 +17,11 @@ namespace PasswordManager.WebAPI.Controllers
         }
 
         [HttpGet(Name = "GetUser")]
-        public IEnumerable<User> Get()
+        public async Task<IActionResult> Get()
         {
             using var db = new PasswordManagerContext();
-            return db.Users.ToList();
+            var users =  db.Users.ToList();
+            return Ok(users);
         }
 
         [HttpPost(Name = "addUser")]
