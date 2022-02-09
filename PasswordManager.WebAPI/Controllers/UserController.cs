@@ -15,8 +15,9 @@ namespace PasswordManager.WebAPI.Controllers
         {
             _logger = logger;
         }
-
-        [HttpGet(Name = "GetUser")]
+        
+        [HttpGet]
+        [Route("/getUser")]
         public async Task<IActionResult> Get()
         {
             using var db = new PasswordManagerContext();
@@ -24,7 +25,8 @@ namespace PasswordManager.WebAPI.Controllers
             return Ok(users);
         }
 
-        [HttpPost(Name = "addUser")]
+        [HttpPost]
+        [Route("/addUser")]
         public IActionResult AddUser([FromBody] User user)
         {
             using var db = new PasswordManagerContext();
